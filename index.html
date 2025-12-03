@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abay Earn - Smart Earnings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <!-- Telegram Ads SDK (Adsgram) -->
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🚀 Abay Earn</h1>
+            <p class="tagline">Your gateway to smart earnings</p>
+        </header>
+
+        <!-- Balance Card -->
+        <div class="balance-card">
+            <div class="balance-label">Total Earnings</div>
+            <div class="balance-amount" id="totalBalance">0.00 ETB</div>
+            <button class="btn btn-primary" id="withdrawBtn">Withdraw</button>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-value" id="referralCount">0</div>
+                <div class="stat-label">Referrals</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📺</div>
+                <div class="stat-value" id="adsWatched">0</div>
+                <div class="stat-label">Ads Watched</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-value" id="todayEarnings">0.00 ETB</div>
+                <div class="stat-label">Today</div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="actions">
+            <button class="action-btn" id="watchAdBtn">
+                <span class="action-icon">📺</span>
+                <span class="action-text">Watch Ad</span>
+                <span class="action-reward">+0.5 ETB</span>
+            </button>
+            
+            <button class="action-btn" id="inviteBtn">
+                <span class="action-icon">🎁</span>
+                <span class="action-text">Invite Friends</span>
+                <span class="action-reward">+1 ETB</span>
+            </button>
+        </div>
+
+        <!-- Referral Link Section -->
+        <div class="referral-section">
+            <h3>Your Referral Link</h3>
+            <div class="referral-link-container">
+                <input type="text" id="referralLink" readonly value="Loading...">
+                <button class="btn-copy" id="copyBtn">Copy</button>
+            </div>
+            <p class="referral-info">Earn 1 ETB for each friend who joins!</p>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="activity-section">
+            <h3>Recent Activity</h3>
+            <div id="activityList" class="activity-list">
+                <div class="activity-item empty">
+                    <p>No activity yet. Start earning now!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-page="home" onclick="navigateTo('home')">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-item" data-page="earn" onclick="navigateTo('earn')">
+            <span class="nav-icon">💰</span>
+            <span class="nav-label">Earn</span>
+        </button>
+        <button class="nav-item" data-page="referrals" onclick="navigateTo('referrals')">
+            <span class="nav-icon">👥</span>
+            <span class="nav-label">Referrals</span>
+        </button>
+        <button class="nav-item" data-page="wallet" onclick="navigateTo('wallet')">
+            <span class="nav-icon">💳</span>
+            <span class="nav-label">Wallet</span>
+        </button>
+    </nav>
+
+    <script src="js/telegram.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/ads.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

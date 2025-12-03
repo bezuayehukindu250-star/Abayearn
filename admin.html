@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Abay Earn</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Header -->
+        <header class="admin-header">
+            <h1>🔐 Admin Panel</h1>
+            <p class="admin-subtitle">Abay Earn Management</p>
+        </header>
+
+        <!-- Stats Overview -->
+        <div class="stats-overview">
+            <div class="stat-box">
+                <div class="stat-icon">👥</div>
+                <div class="stat-info">
+                    <div class="stat-value" id="totalUsers">0</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">💰</div>
+                <div class="stat-info">
+                    <div class="stat-value" id="totalEarnings">0 ETB</div>
+                    <div class="stat-label">Total Earnings</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">📺</div>
+                <div class="stat-info">
+                    <div class="stat-value" id="totalAds">0</div>
+                    <div class="stat-label">Ads Watched</div>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon">🎁</div>
+                <div class="stat-info">
+                    <div class="stat-value" id="totalReferrals">0</div>
+                    <div class="stat-label">Total Referrals</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h2>Quick Actions</h2>
+            <div class="action-grid">
+                <button class="action-card" onclick="showUserManagement()">
+                    <span class="action-icon">👥</span>
+                    <span class="action-label">Manage Users</span>
+                </button>
+                <button class="action-card" onclick="showWithdrawals()">
+                    <span class="action-icon">💸</span>
+                    <span class="action-label">Withdrawals</span>
+                </button>
+                <button class="action-card" onclick="showSettings()">
+                    <span class="action-icon">⚙️</span>
+                    <span class="action-label">Settings</span>
+                </button>
+                <button class="action-card" onclick="showBroadcast()">
+                    <span class="action-icon">📢</span>
+                    <span class="action-label">Broadcast</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- User Management Section -->
+        <div class="section" id="userSection">
+            <h2>Recent Users</h2>
+            <div class="search-bar">
+                <input type="text" id="userSearch" placeholder="Search users...">
+                <button onclick="searchUsers()">🔍</button>
+            </div>
+            <div id="userList" class="user-list">
+                <div class="loading">Loading users...</div>
+            </div>
+        </div>
+
+        <!-- Withdrawal Requests -->
+        <div class="section" id="withdrawalSection">
+            <h2>Pending Withdrawals</h2>
+            <div id="withdrawalList" class="withdrawal-list">
+                <div class="loading">Loading withdrawals...</div>
+            </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="section" id="settingsSection" style="display: none;">
+            <h2>App Settings</h2>
+            <div class="settings-form">
+                <div class="form-group">
+                    <label>Ad Reward Amount (ETB)</label>
+                    <input type="number" id="adReward" value="0.5" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label>Referral Reward (ETB)</label>
+                    <input type="number" id="referralReward" value="1" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label>Minimum Withdrawal (ETB)</label>
+                    <input type="number" id="minWithdrawal" value="50" step="1">
+                </div>
+                <button class="btn-save" onclick="saveSettings()">Save Settings</button>
+            </div>
+        </div>
+
+        <!-- Broadcast Message -->
+        <div class="section" id="broadcastSection" style="display: none;">
+            <h2>Broadcast Message</h2>
+            <div class="broadcast-form">
+                <textarea id="broadcastMessage" placeholder="Enter message to send to all users..."></textarea>
+                <button class="btn-broadcast" onclick="sendBroadcast()">Send to All Users</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-page="dashboard" onclick="adminNavigateTo('dashboard')">
+            <span class="nav-icon">📊</span>
+            <span class="nav-label">Dashboard</span>
+        </button>
+        <button class="nav-item" data-page="users" onclick="adminNavigateTo('users')">
+            <span class="nav-icon">👥</span>
+            <span class="nav-label">Users</span>
+        </button>
+        <button class="nav-item" data-page="withdrawals" onclick="adminNavigateTo('withdrawals')">
+            <span class="nav-icon">💸</span>
+            <span class="nav-label">Payouts</span>
+        </button>
+        <button class="nav-item" data-page="settings" onclick="adminNavigateTo('settings')">
+            <span class="nav-icon">⚙️</span>
+            <span class="nav-label">Settings</span>
+        </button>
+    </nav>
+
+    <script src="js/telegram.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
